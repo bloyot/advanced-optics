@@ -1,0 +1,62 @@
+{
+  "description": "",
+  "faction": "galacticempire",
+  "name": "Ext league",
+  "pilots": [
+    {
+      "id": "darthvader",
+      "name": "darthvader",
+      "points": 7,
+      "ship": "tieadvancedx1",
+      "upgrades": {
+        "tech": [
+          "patternanalyzer"
+        ],
+        "modification": [
+          "stealthdevice",
+          "afterburners"
+        ]
+      }
+    },
+    {
+      "id": "whisper",
+      "name": "whisper",
+      "points": 5,
+      "ship": "tiephphantom",
+      "upgrades": {
+        "modification": [
+          "stealthdevice"
+        ]
+      }
+    },
+    {
+      "id": "lieutenantsai",
+      "name": "lieutenantsai",
+      "points": 5,
+      "ship": "lambdaclasst4ashuttle",
+      "upgrades": {
+        "crew": [
+          "emperorpalpatine"
+        ],
+        "modification": [
+          "electronicbaffle"
+        ]
+      }
+    },
+    {
+      "id": "tomaxbren-swz98",
+      "name": "tomaxbren-swz98",
+      "points": 3,
+      "ship": "tiesabomber"
+    }
+  ],
+  "points": 20,
+  "vendor": {
+    "yasb": {
+      "builder": "YASB - X-Wing 2.5",
+      "builder_url": "https://yasb.app/",
+      "link": "https://yasb.app/?f=Galactic%20Empire&d=v9ZsZ20Z173XWWW206WWW166W105Y199XWWW166WY166XWW29WW106WY647X497W234W317&sn=Ext%20league&obs="
+    }
+  },
+  "version": "09/08/2023"
+}
