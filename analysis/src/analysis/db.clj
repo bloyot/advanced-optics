@@ -2,15 +2,21 @@
 (ns analysis.db
   (:require
     [analysis.constants :as constants]
+    [clojure.string :as str]
     [honey.sql :as sql]
     [honey.sql.helpers :refer [columns delete-from from insert-into join select
                                values where] :as h]
     [next.jdbc :as jdbc]
     [next.jdbc.result-set :as rs]))
 
+;; a bit hacky but need to have the correct reference path for the db if running in server vs analysis module
+(def dbname (if (str/ends-with? (System/getProperty "user.dir") "analysis")
+              "../server/db/advanced-optics.db"
+              "db/advanced-optics.db"))
+
 (def db-spec
   {:dbtype "sqlite"
-   :dbname "db/analysis.db"})
+   :dbname dbname})
 
 (def ds (jdbc/get-datasource db-spec))
 

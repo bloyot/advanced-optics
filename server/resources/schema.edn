@@ -1,0 +1,90 @@
+{:enums
+ {:Faction
+  {:description "The factions available to query for"
+   :values      [:all
+                 :galacticrepublic
+                 :galacticempire
+                 :firstorder
+                 :rebelalliance
+                 :resistance
+                 :scumandvillainy
+                 :separatistalliance]}}
+
+ :objects
+ {:MetaTimeSeriesAverages
+  {:description "The time series data for average list stats over a time range"
+   :fields      {:force           {:type        (list Float)
+                                   :description "force per ship"}
+                 :totalHull       {:type        (list Float)
+                                   :description "total amount of hull in a list"}
+                 :totalAgility    {:type        (list Float)
+                                   :description "total amount of agility in a list"}
+                 :totalInitiative {:type        (list Float)
+                                   :description "total amount of initiative in a list"}
+                 :agility         {:type        (list Float)
+                                   :description "the avg agility for a list"}
+                 :numShips        {:type        (list Float)
+                                   :description "number of ships in a list"}
+                 :shields         {:type        (list Float)
+                                   :description "shields per ship"}
+                 :totalForce      {:type        (list Float)
+                                   :description "total amount of force in a list"}
+                 :initiative      {:type        (list Float)
+                                   :description "initiative per ship"}
+                 :attack          {:type        (list Float)
+                                   :description "attack per ship"}
+                 :totalShields    {:type        (list Float)
+                                   :description "total amount of shields in a list"}
+                 :totalHealth     {:type        (list Float)
+                                   :description "total amount of health in a list"}
+                 :totalAttack     {:type        (list Float)
+                                   :description "total amount of attack in a list"}
+                 :hull            {:type        (list Float)
+                                   :description "hull per ship"}}}
+
+  :MetaOverallAverages
+  {:description "A snapshot of the average list stats for a given meta"
+   :fields      {:force           {:type        Float
+                                   :description "force per ship"}
+                 :totalHull       {:type        Float
+                                   :description "total amount of hull in a list"}
+                 :totalAgility    {:type        Float
+                                   :description "total amount of agility in a list"}
+                 :totalInitiative {:type        Float
+                                   :description "total amount of initiative in a list"}
+                 :agility         {:type        Float
+                                   :description "the avg agility for a list"}
+                 :numShips        {:type        Float
+                                   :description "number of ships in a list"}
+                 :shields         {:type        Float
+                                   :description "shields per ship"}
+                 :totalForce      {:type        Float
+                                   :description "total amount of force in a list"}
+                 :initiative      {:type        Float
+                                   :description "initiative per ship"}
+                 :attack          {:type        Float
+                                   :description "attack per ship"}
+                 :totalShields    {:type        Float
+                                   :description "total amount of shields in a list"}
+                 :totalHealth     {:type        Float
+                                   :description "total amount of health in a list"}
+                 :totalAttack     {:type        Float
+                                   :description "total amount of attack in a list"}
+                 :hull            {:type        Float
+                                   :description "hull per ship"}}}
+
+  :FactionAnalysis
+  {:description "Result object combining timeseries and overall data"
+   :fields
+   {:faction    {:type :Faction}
+    :timeSeries {:type :MetaTimeSeriesAverages}
+    :overall    {:type :MetaOverallAverages}}}
+
+  :Query
+  {:fields
+   {:metaAnalysis
+    {:type (list :FactionAnalysis)
+     :args {:factions   {:type (list :Faction)}
+            :startDate  {:type String}
+            :endDate    {:type String}
+            :minPlayers {:type Int}}}}}}}
