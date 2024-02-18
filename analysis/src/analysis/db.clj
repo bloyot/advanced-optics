@@ -5,7 +5,7 @@
     [clojure.string :as str]
     [honey.sql :as sql]
     [honey.sql.helpers :refer [columns delete-from from insert-into join select
-                               values where] :as h]
+                               values where order-by] :as h]
     [next.jdbc :as jdbc]
     [next.jdbc.result-set :as rs]))
 
@@ -49,7 +49,7 @@
 (defn get-lists
   "Select all lists with the corresponding faction(s) within the given date range"
   [factions start end & min-players]
-  (jdbc/execute! ds (-> (select :list_xws)
+  (jdbc/execute! ds (-> (select :list_xws :date)
                         (from :list)
                         (join :tournament [:= :tournament.tournament_id :list.tournament_id])
                         (where
@@ -58,6 +58,7 @@
                           [:> :num_players (or min-players 0)]
                           [:>= :date (str start)]
                           [:<= :date (str end)])
+                        (order-by [:date :asc])
                         sql/format)
                  {:builder-fn rs/as-unqualified-maps}))
 
